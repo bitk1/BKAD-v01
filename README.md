@@ -20,7 +20,7 @@ sudo bash scripts/setup_bkad.sh
 
 sudo reboot
 
-## Usage
+### Usage
 
 Access the IPFS Web UI at http://127.0.0.1:5001/webui in a local web browser or
 http://192.168.1.103:5001/webui from another machine on the same subnet (replace with actual ip address). 
