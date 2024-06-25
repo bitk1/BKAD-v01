@@ -6,8 +6,8 @@ BKAD-v01 (BitKnowledge Archive Device Version 01) is a project to set up a BKAD,
 ## Installation
 Follow the steps to set up BKAD-v01 on a BKAD.
 
-sudo apt update
-sudo apt upgrade 
+sudo apt update && sudo apt upgrade -y
+
 
 ### Step BKAD, open a terminal and run the following commands to clone the BKAD repository from GitHub:
 ```bash
