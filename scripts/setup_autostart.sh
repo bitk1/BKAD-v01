@@ -1,24 +1,23 @@
 #!/bin/bash
-# Set up IPFS to start on boot and launch web UI in full-screen mode
 
-# Add IPFS to systemd
-echo "[Unit]
-Description=IPFS daemon
+# Ensure the script is run as root
+if [ "$(id -u)" -ne 0 ]; then
+  echo "This script must be run as root"
+  exit 1
+fi
 
-[Service]
-ExecStart=/usr/local/bin/ipfs daemon
-Restart=always
-User=pi
-
-[Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/system/ipfs.service
-
-sudo systemctl enable ipfs.service
+# Variables
+IPFS_USER="bitk1"
+AUTOSTART_DIR="/home/$IPFS_USER/.config/lxsession/LXDE-pi"
+AUTOSTART_FILE="$AUTOSTART_DIR/autostart"
 
 # Install Chromium if not already installed
-sudo apt install -y chromium-browser
+apt-get install -y chromium-browser
 
 # Set Chromium to launch IPFS web UI on boot
-mkdir -p ~/.config/lxsession/LXDE-pi
-echo "@chromium-browser --kiosk http://localhost:5001/webui" > ~/.config/lxsession/LXDE-pi/autostart
+mkdir -p $AUTOSTART_DIR
+echo "@chromium-browser --kiosk http://localhost:5001/webui" > $AUTOSTART_FILE
+chown -R $IPFS_USER:$IPFS_USER $AUTOSTART_DIR
+
+echo "Autostart setup complete."
 
