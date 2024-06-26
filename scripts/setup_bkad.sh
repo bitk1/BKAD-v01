@@ -27,13 +27,12 @@ cd go-ipfs
 sudo -u $IPFS_USER ipfs init
 
 # Update IPFS configuration
-sudo -u $IPFS_USER sed -i 's/"API":.*/"API": "\/ip4\/0.0.0.0\/tcp\/5001",/' $IPFS_PATH/config
-sudo -u $IPFS_USER sed -i 's/"Gateway":.*/"Gateway": "\/ip4\/0.0.0.0\/tcp\/8080",/' $IPFS_PATH/config
-sudo -u $IPFS_USER sed -i '/"API": {/a \
-      "HTTPHeaders": { \
-        "Access-Control-Allow-Origin": ["*"], \
-        "Access-Control-Allow-Methods": ["PUT", "POST", "GET"] \
-      },' $IPFS_PATH/config
+sudo -u $IPFS_USER jq '.Addresses.API = "/ip4/0.0.0.0/tcp/5001"' $IPFS_PATH/config > $IPFS_PATH/config.tmp && mv $IPFS_PATH/config.tmp $IPFS_PATH/config
+sudo -u $IPFS_USER jq '.Addresses.Gateway = "/ip4/0.0.0.0/tcp/8080"' $IPFS_PATH/config > $IPFS_PATH/config.tmp && mv $IPFS_PATH/config.tmp $IPFS_PATH/config
+sudo -u $IPFS_USER jq '.API.HTTPHeaders = {
+  "Access-Control-Allow-Origin": ["*"],
+  "Access-Control-Allow-Methods": ["PUT", "POST", "GET"]
+}' $IPFS_PATH/config > $IPFS_PATH/config.tmp && mv $IPFS_PATH/config.tmp $IPFS_PATH/config
 
 # Create a systemd service for IPFS
 cat <<EOT > $IPFS_SERVICE
