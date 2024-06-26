@@ -15,7 +15,7 @@ AUTOSTART_FILE="$AUTOSTART_DIR/autostart"
 
 # Install prerequisites
 apt-get update
-apt-get install -y wget tar chromium-browser
+apt-get install -y wget tar chromium-browser jq
 
 # Download and install IPFS
 wget https://dist.ipfs.io/go-ipfs/v0.11.0/go-ipfs_v0.11.0_linux-arm.tar.gz
