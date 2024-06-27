@@ -17,7 +17,7 @@ WEBUI_SHORTCUT="$DESKTOP_DIR/ipfs_webui.desktop"
 
 # Install prerequisites
 apt-get update
-apt-get install -y wget tar chromium-browser jq
+apt-get install -y wget tar chromium-browser jq xinput-calibrator
 
 # Download and install IPFS
 wget https://dist.ipfs.io/go-ipfs/v0.11.0/go-ipfs_v0.11.0_linux-arm.tar.gz
@@ -59,7 +59,7 @@ systemctl start ipfs
 
 # Configure Chromium to start on boot
 mkdir -p $AUTOSTART_DIR
-echo "@chromium-browser --kiosk http://localhost:5001/webui --noerrdialogs --disable-infobars --check-for-update-interval=31536000" > $AUTOSTART_FILE
+echo "@chromium-browser --kiosk http://localhost:5001/webui --noerrdialogs --disable-infobars --explicitly-allowed-ports=5001 --check-for-update-interval=31536000" > $AUTOSTART_FILE
 chown -R $IPFS_USER:$IPFS_USER $AUTOSTART_DIR
 
 # Ensure the autostart file is executable
@@ -71,7 +71,7 @@ cat <<EOT > $WEBUI_SHORTCUT
 [Desktop Entry]
 Name=IPFS Web UI
 Comment=Access the IPFS Web UI
-Exec=chromium-browser http://localhost:5001/webui
+Exec=chromium-browser http://localhost:5001/webui --explicitly-allowed-ports=5001
 Icon=web-browser
 Terminal=false
 Type=Application
@@ -79,6 +79,13 @@ Categories=Network;WebBrowser;
 EOT
 chown -R $IPFS_USER:$IPFS_USER $WEBUI_SHORTCUT
 chmod +x $WEBUI_SHORTCUT
+
+# Calibrate touchscreen
+xinput-calibrator
+
+# Ensure /etc/hosts file has correct localhost entry
+grep -q -F '127.0.0.1 localhost' /etc/hosts || echo '127.0.0.1 localhost' >> /etc/hosts
+grep -q -F '::1 localhost' /etc/hosts || echo '::1 localhost' >> /etc/hosts
 
 echo "BKAD setup complete. Please reboot the system."
 
