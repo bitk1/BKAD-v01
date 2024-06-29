@@ -13,6 +13,13 @@ Connect the hard drive to the BKAD and run:
 
 sudo bash scripts/ingest_pin.sh
 
+Encrypting and Decrypting Files
+
+./scripts/encrypt.sh <file-to-encrypt> <output-encrypted-file>
+./scripts/encrypt.sh myfile.txt myfile.txt.enc
+
+./scripts/decrypt.sh <file-to-decrypt> <output-decrypted-file>
+./scripts/decrypt.sh myfile.txt.enc myfile.txt
 
 
 ## License
