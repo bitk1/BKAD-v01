@@ -80,6 +80,19 @@ EOT
 chown -R $IPFS_USER:$IPFS_USER $WEBUI_SHORTCUT
 chmod +x $WEBUI_SHORTCUT
 
+# Generate a unique swarm key
+SWARM_KEY=$(openssl rand -base64 32)
+
+# IPFS swarm key file
+SWARM_KEY_FILE="/home/$IPFS_USER/.ipfs/swarm.key"
+
+# Create swarm key file
+echo -e "/key/swarm/psk/1.0.0/\n/base16/\n$SWARM_KEY" > $SWARM_KEY_FILE
+
+# Set appropriate permissions
+chown $IPFS_USER:$IPFS_USER $SWARM_KEY_FILE
+chmod 600 $SWARM_KEY_FILE
+
 # Calibrate touchscreen
 xinput-calibrator
 
