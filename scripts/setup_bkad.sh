@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ensure the script is run as root
-if [ "$(id -u)" -ne 0 ]; then
+if [ "$(id -u)" -ne 0; then
   echo "This script must be run as root"
   exit 1
 fi
@@ -27,6 +27,19 @@ cd go-ipfs
 
 # Initialize IPFS for the specified user
 sudo -u $IPFS_USER ipfs init
+
+# Generate a unique swarm key
+SWARM_KEY=$(openssl rand -base64 32)
+
+# IPFS swarm key file
+SWARM_KEY_FILE="/home/$IPFS_USER/.ipfs/swarm.key"
+
+# Create swarm key file
+echo -e "/key/swarm/psk/1.0.0/\n/base16/\n$SWARM_KEY" > $SWARM_KEY_FILE
+
+# Set appropriate permissions
+chown $IPFS_USER:$IPFS_USER $SWARM_KEY_FILE
+chmod 600 $SWARM_KEY_FILE
 
 # Update IPFS configuration
 sudo -u $IPFS_USER jq '.Addresses.API = "/ip4/0.0.0.0/tcp/5001"' $IPFS_PATH/config > $IPFS_PATH/config.tmp && mv $IPFS_PATH/config.tmp $IPFS_PATH/config
@@ -79,19 +92,6 @@ Categories=Network;WebBrowser;
 EOT
 chown -R $IPFS_USER:$IPFS_USER $WEBUI_SHORTCUT
 chmod +x $WEBUI_SHORTCUT
-
-# Generate a unique swarm key
-SWARM_KEY=$(openssl rand -base64 32)
-
-# IPFS swarm key file
-SWARM_KEY_FILE="/home/$IPFS_USER/.ipfs/swarm.key"
-
-# Create swarm key file
-echo -e "/key/swarm/psk/1.0.0/\n/base16/\n$SWARM_KEY" > $SWARM_KEY_FILE
-
-# Set appropriate permissions
-chown $IPFS_USER:$IPFS_USER $SWARM_KEY_FILE
-chmod 600 $SWARM_KEY_FILE
 
 # Calibrate touchscreen
 xinput-calibrator
