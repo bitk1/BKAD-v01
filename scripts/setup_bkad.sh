@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ensure the script is run as root
-if [ "$(id -u)" -ne 0; then
+if [ "$(id -u)" -ne 0 ]; then
   echo "This script must be run as root"
   exit 1
 fi
@@ -17,7 +17,7 @@ WEBUI_SHORTCUT="$DESKTOP_DIR/ipfs_webui.desktop"
 
 # Install prerequisites
 apt-get update
-apt-get install -y wget tar chromium-browser jq xinput-calibrator
+apt-get install -y wget tar chromium-browser jq xinput-calibrator xxd
 
 # Download and install IPFS
 wget https://dist.ipfs.io/go-ipfs/v0.11.0/go-ipfs_v0.11.0_linux-arm.tar.gz
@@ -28,18 +28,8 @@ cd go-ipfs
 # Initialize IPFS for the specified user
 sudo -u $IPFS_USER ipfs init
 
-# Generate a unique swarm key
-SWARM_KEY=$(openssl rand -base64 32)
-
-# IPFS swarm key file
-SWARM_KEY_FILE="/home/$IPFS_USER/.ipfs/swarm.key"
-
-# Create swarm key file
-echo -e "/key/swarm/psk/1.0.0/\n/base16/\n$SWARM_KEY" > $SWARM_KEY_FILE
-
-# Set appropriate permissions
-chown $IPFS_USER:$IPFS_USER $SWARM_KEY_FILE
-chmod 600 $SWARM_KEY_FILE
+# Generate a new swarm key
+sudo -u $IPFS_USER openssl rand -base64 32 | tr -d '\n' | xxd -p -c 64 | sed 's/^/\/key\/swarm\/psk\/1.0.0\/\n\/base16\/\n/' > $IPFS_PATH/swarm.key
 
 # Update IPFS configuration
 sudo -u $IPFS_USER jq '.Addresses.API = "/ip4/0.0.0.0/tcp/5001"' $IPFS_PATH/config > $IPFS_PATH/config.tmp && mv $IPFS_PATH/config.tmp $IPFS_PATH/config
