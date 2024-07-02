@@ -14,18 +14,11 @@ AUTOSTART_DIR="/home/$IPFS_USER/.config/lxsession/LXDE-pi"
 AUTOSTART_FILE="$AUTOSTART_DIR/autostart"
 DESKTOP_DIR="/home/$IPFS_USER/Desktop"
 WEBUI_SHORTCUT="$DESKTOP_DIR/ipfs_webui.desktop"
-BOOTSTRAP_NODES=(
-  "/ip4/<peer1_ip>/tcp/4001/p2p/<peer1_id>"
-  "/ip4/<peer2_ip>/tcp/4001/p2p/<peer2_id>"
-)
+WEBUI_PATH="/home/$IPFS_USER/webui"
 
 # Install prerequisites
 apt-get update
-apt-get install -y wget tar chromium-browser jq xinput-calibrator xxd avahi-daemon
-
-# Start and enable avahi-daemon
-systemctl enable avahi-daemon
-systemctl start avahi-daemon
+apt-get install -y wget tar chromium-browser jq xinput-calibrator xxd
 
 # Download and install IPFS
 wget https://dist.ipfs.io/go-ipfs/v0.11.0/go-ipfs_v0.11.0_linux-arm.tar.gz
@@ -46,11 +39,6 @@ sudo -u $IPFS_USER jq '.API.HTTPHeaders = {
   "Access-Control-Allow-Origin": ["http://192.168.1.103:5001", "http://localhost:3000", "http://127.0.0.1:5001", "https://webui.ipfs.io"],
   "Access-Control-Allow-Methods": ["PUT", "POST"]
 }' $IPFS_PATH/config > $IPFS_PATH/config.tmp && mv $IPFS_PATH/config.tmp $IPFS_PATH/config
-
-# Add bootstrap nodes
-for node in "${BOOTSTRAP_NODES[@]}"; do
-  sudo -u $IPFS_USER ipfs bootstrap add $node
-done
 
 # Create a systemd service for IPFS
 cat <<EOT > $IPFS_SERVICE
@@ -73,7 +61,11 @@ systemctl daemon-reload
 systemctl enable ipfs
 systemctl start ipfs
 
-# Configure Chromium to start on boot
+# Download the customized IPFS WebUI
+sudo -u $IPFS_USER git clone https://github.com/yourusername/BKAD-v01.git /home/$IPFS_USER/BKAD-v01
+cp -r /home/$IPFS_USER/BKAD-v01/webui/* $WEBUI_PATH/
+
+# Configure Chromium to start on boot with the custom WebUI
 mkdir -p $AUTOSTART_DIR
 echo "@chromium-browser --kiosk http://localhost:5001/webui --noerrdialogs --disable-infobars --explicitly-allowed-ports=5001 --check-for-update-interval=31536000" > $AUTOSTART_FILE
 chown -R $IPFS_USER:$IPFS_USER $AUTOSTART_DIR

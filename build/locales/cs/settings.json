@@ -1,0 +1,183 @@
+{
+  "title": "Nastavení",
+  "save": "Uložit",
+  "saving": "Ukládání…",
+  "reset": "Resetovat",
+  "learnMoreLink": "Zjistit více.",
+  "showOptions": "Zobrazit možnosti",
+  "pinningServices": {
+    "title": "Služby připínání",
+    "description": "Místní připnutí použijte, pokud chcete zajistit, aby položka v uzlu nebyla nikdy shromážděna jako odpad, i když ji odstraníte ze Souborů. Své účty můžete také propojit s jinými službami vzdáleného připínání, abyste mohli automaticky nebo selektivně uchovávat soubory u těchto poskytovatelů, což vám umožní uchovávat záložní kopie souborů a/nebo je zpřístupnit ostatním, když je váš místní uzel offline.",
+    "noPinRemoteDescription": "Chybí podpora pro služby vzdáleného připnutí třetích stran. Aktualizujte svůj uzel IPFS na verzi Kubo 0.8.0 nebo novější a budete je moci přidat a konfigurovat zde.",
+    "addAutoUpload": "Povolit automatické nahrávání",
+    "removeAutoUpload": "Zakázat automatické nahrávání"
+  },
+  "language": "Jazyk",
+  "analytics": "Sběr informací",
+  "cliTutorMode": "Výukový režim CLI",
+  "config": "IPFS konfigurace",
+  "languageModal": {
+    "title": "Změnit jazyk",
+    "description": "Vyberte si preferovaný jazyk.",
+    "translationProjectIntro": "Přidejte nebo vylepšete překlady a vylepšete IPFS pro všechny!",
+    "translationProjectLink": "Připojte se k projektu překladu IPFS"
+  },
+  "apiDescription": "<0>Pokud je váš uzel nakonfigurován s <1>vlastní adresou API</1> včetně jiného portu než výchozího 5001, zadejte ji zde.</0>",
+  "publicGatewayDescription": "<0>Vyberte, kterou <1>veřejnou bránu</1> chcete použít při generování sdílených odkazů.</0>",
+  "cliDescription": "<0>Povolením této možnosti zobrazíte vedle běžných příkazů systému IPFS ikonu \"zobrazit kód\".<1></1> Kliknutím na ni se otevře modální okno s kódem CLI daného příkazu, který můžete vložit do rozhraní příkazového řádku systému IPFS v terminálu.</0>",
+  "cliModal": {
+    "extraNotesJsonConfig": "Pokud jste v editoru kódu této stránky provedli změny konfigurace, které chcete uložit, klikněte na ikonu stahování vedle tlačítka kopírovat a stáhněte je jako soubor JSON."
+  },
+  "pinningModal": {
+    "title": "Vyberte poskytovatele služby připnutí.",
+    "description": "Nevidíte svého poskytovatele služeb připínání? <1>Přidejte si vlastního.<1>"
+  },
+  "pinningServiceModal": {
+    "title": "Konfigurace vlastní služby připínání.",
+    "description": "Chcete svou vlastní službu připínání zpřístupnit ostatním? <1>Zjistěte, jak na to<1>.",
+    "service": "Služba",
+    "nickname": "Přezdívka",
+    "nicknamePlaceholder": "Název vaší služby",
+    "apiEndpoint": "Koncový bod API",
+    "apiEndpointPlaceholder": "URL pro koncový bod API",
+    "secretApiKey": "Tajný přístupový token",
+    "secretApiKeyHowToLink": "Jak vygenerovat nový token",
+    "autoUpload": "Automatické nahrávání",
+    "complianceLabel": "🔍 {nickname} zpráva o shodě s připínáním"
+  },
+  "autoUploadModal": {
+    "title": "Hostování dat {name}",
+    "description": "Je-li automatické nahrávání povoleno, bude pravidelně připínat kořenový adresář Files, čímž zajistí, že vše bude vzdáleně připnuté a dostupné ostatním partnerům, i když místní uzel IPFS bude offline. Pokud tuto funkci zakážete, můžete stále připínat jednotlivé soubory ručně pomocí možnosti \"Nastavit připínání\" na obrazovce Soubory."
+  },
+  "errors": {
+    "nickname": "Přezdívka je povinná",
+    "apiError": "chyba API",
+    "apiEndpoint": "Musí to být platná adresa URL",
+    "secretApiKey": "Je vyžadován tajný přístupový token",
+    "failedToFetch": "Nepodařilo se načíst",
+    "failedToFetchTitle": "Nelze načíst počet připnutí z této vzdálené služby. Ujistěte se, že je online a že jste zadali správné pověření. Pokud se jedná o nově přidanou službu, zkuste ji odebrat a znovu přidat."
+  },
+  "actions": {
+    "addService": "Přidat službu",
+    "generateKey": "Generovat klíč",
+    "edit": "Změnit",
+    "close": "Zavřít",
+    "save": "Uložit",
+    "cancel": "Zrušit",
+    "enable": "Povolit",
+    "disable": "Zakázat"
+  },
+  "edit": "Upravit",
+  "visitService": "Navštívit službu",
+  "remove": "Odstranit",
+  "localPinning": "Místní připínání",
+  "service": "Služba",
+  "size": "Velikost",
+  "pins": "Špendlíky",
+  "autoUpload": "Automatické nahrávání",
+  "autoUploadPolicy": {
+    "true": "Všechny soubory",
+    "false": "Vypnout"
+  },
+  "fetchingSettings": "Získávání nastavení...",
+  "ipfsDaemonOffline": "Démon IPFS je offline. Zapněte jej a zkuste to znovu.",
+  "settingsUnavailable": "Nastavení není dostupný. Prosím zkontrolujte zdali běží IPFS služba.",
+  "settingsHaveChanged": "Nastavení se změnilo; kliknutím na <1>Obnovit</1> aktualizujte obsah editoru.",
+  "errorOccured": "V průběhu ukládání vašeho nastavení se vyskytla chyba",
+  "checkConsole": "Zkontrolujte konzoli prohlížeče pro více informací.",
+  "changesSaved": "Vaše změny byly uloženy.",
+  "settingsWillBeUsedNextTime": "Nové nastavení se použije při příštím restartu IPFS služby.",
+  "ipfsConfigDescription": "Konfigurační soubor IPFS je dokument JSON. Při spuštění démona IPFS se načte jednou. Uložte změny a restartujte démona IPFS, abyste je použili.",
+  "ipfsConfigHelp": "Další informace naleznete v dokumentaci.",
+  "AnalyticsToggle": {
+    "label": "Pomozte vylepšit tuto aplikaci odesláním anonymních dat o využití",
+    "summary": "Nakonfigurujte, co se shromažďuje",
+    "paragraph1": "Neshromažďují se žádné CID, názvy souborů ani jiné osobní informace. Chceme, aby nám metriky ukázaly, které funkce jsou užitečné, aby nám pomohly upřednostnit, na čem budeme dále pracovat, a informace o konfiguraci systému, které povedou naše testování.",
+    "paragraph2": "Protocol Labs je hostitelem aplikace <1>Countly</1> pro zaznamenávání anonymních dat o použití pro tuto aplikaci.",
+    "basicInfo": "Následující další informace jsou odeslány na countly.ipfs.io",
+    "optionalInfo": "Můžete se přihlásit a odeslat následující informace:",
+    "sessions": {
+      "label": "Sessions",
+      "summary": "Kdy a jak dlouho používáte aplikaci a metriky prohlížeče",
+      "details": "<0>Odesílá se následující metriky prohlížeče:</0><1><0>Náhodné vygenerované ID</0><1>Časové razítko zařízení při spuštění relace</1><2>Periodické časové značky ke sledování trvání</2><3>App verze; např. 2.4.4</3><4>Lokalizace; např. en-GB</4><5>User agent; např. Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2)…</5><6> Rozlišení obrazovky; např. Rozměry 800×600</6><7> Hustota obrazových pixelů; např. 1</7></1>"
+    },
+    "events": {
+      "label": "Události",
+      "summary": "akce, jako je přidávání nebo mazání souborů, a jak dlouho to trvalo",
+      "details": "Akce specifické pro aplikaci. Zaznamenáváme pouze to, že k akci došlo, jak dlouho to trvalo od začátku do konce, a počítáme, pokud událost zahrnovala více položek."
+    },
+    "views": {
+      "label": "Zobrazení stránky",
+      "summary": "Které části aplikace navštěvujete",
+      "details": "Zaznamenává, které části aplikací jsou navštíveny. Zaznamenané cesty obsahují spíše vzor používaný k přiřazení trasy než úplnou adresu URL."
+    },
+    "location": {
+      "label": "Umístění",
+      "summary": "Kód země z IP adresy (IP adresa je zahozena)",
+      "details": "Vaše IP adresa se používá k výpočtu kódu země pro vaši polohu, například „FR“ pro Francii. Pokud není povoleno sledování polohy, odešle se prázdná vlastnost umístění se všemi požadavky na signál serveru k deaktivaci vyhledávání polohy. Tyto informace pomáhají řídit naše překladatelské úsilí a zjistit, kam bychom měli dát události."
+    },
+    "crashes": {
+      "label": "Chyby aplikace",
+      "summary": "Chybové zprávy JavaScriptu a stopy zásobníku",
+      "details": "Zaznamenává chybové zprávy JavaScriptu a stopy zásobníku, ke kterým dochází při používání aplikace, pokud je to možné. Je velmi užitečné vědět, kdy aplikace pro vás nefunguje, ale <1>chybové zprávy mohou obsahovat identifikovatelné informace</1>, jako jsou CID nebo cesty k souborům, takže to povolte pouze v případě, že s námi tyto informace pohodlně sdílíte."
+    }
+  },
+  "cliToggle": {
+    "label": "Povolení výukového režimu rozhraní příkazového řádku (CLI)"
+  },
+  "tour": {
+    "step1": {
+      "title": "Stránka nastavení",
+      "paragraph1": "Zde můžete změnit nastavení vašeho uzlu Web UI a IPFS.",
+      "paragraph2": "Pokud používáte IPFS Desktop, budete mít také určitá konkrétní nastavení."
+    },
+    "step2": {
+      "title": "Vlastní adresa API",
+      "paragraph1": "Pokud jste svůj uzel IPFS nakonfigurovali s vlastní adresou API, můžete namísto ruční úpravy JSON aktualizovat konfigurační soubor přímo zde."
+    },
+    "step3": {
+      "title": "Služby Pinning",
+      "paragraph1": "<0>Pokud máte účty u služeb vzdáleného připínání třetích stran, přidejte je sem, abyste mohli připínat/odpínat položky k těmto službám přímo z obrazovky Soubory. Více informací o službách připínání třetích stran najdete v <1>dokumentaci IPFS</1>.</0>"
+    },
+    "step4": {
+      "title": "Volič jazyka",
+      "paragraph1": "<0>Můžete změnit jazyk webového uživatelského rozhraní. Pokud požadovaný jazyk není k dispozici, přejděte na naši stránku projektu v <1>Transifexu</1> a pomozte nám s překladem!</0>"
+    },
+    "step5": {
+      "title": "Analytika anonymního použití",
+      "paragraph1": "Pokud se přihlásíte, můžete nám pomoci vylepšit webové uživatelské rozhraní zasláním anonymních analýz využití.",
+      "paragraph2": "Můžete si vybrat, jaká data nám pošlete, a my vás nebudeme moci identifikovat, vážíme si především soukromí."
+    },
+    "step6": {
+      "title": "Výukový režim CLI",
+      "paragraph1": "Zapnutím výukového režimu CLI zobrazíte zkratky běžných příkazů IPFS v příkazovém řádku - to je užitečné, pokud se učíte používat IPFS z terminálu nebo pokud si potřebujete jen osvěžit informace."
+    },
+    "step7": {
+      "title": "IPFS Config",
+      "paragraph1": "Můžete změnit konfiguraci vašeho uzlu IPFS přímo z webového uživatelského rozhraní!",
+      "paragraph2": "Nezapomeňte restartovat démona a aplikovat změny."
+    }
+  },
+  "Experiments": {
+    "description": "Zde získáte rychlý náhled na nové funkce IPFS povolením níže uvedených možností. Testujeme tyto nápady a nemusí být dokonalé, takže bychom rádi slyšeli vaši zpětnou vazbu.",
+    "issueUrl": "Otevřete problém",
+    "feedbackUrl": "💌Zanechte zpětnou vazbu",
+    "readMoreUrl": "Přečtěte si více"
+  },
+  "ipnsPublishingKeys": {
+    "title": "IPNS Vydavatelské klíče",
+    "description": "Meziplanetární jmenný systém (IPNS) poskytuje kryptografické adresy pro publikování aktualizací obsahu, u něhož se očekává, že se bude v průběhu času měnit. Tato funkce vyžaduje, aby byl váš uzel alespoň jednou denně online, aby se zajistilo, že záznamy IPNS budou ve veřejném DHT udržovány při životě."
+  },
+  "generateKeyModal": {
+    "title": "Generování nového klíče IPNS",
+    "description": "Zadejte přezdívku tohoto klíče, který se má vygenerovat:"
+  },
+  "renameKeyModal": {
+    "title": "Přejmenujte Klíč",
+    "description": "Zadejte novou přezdívku klíče IPNS <1>{name}</1> ."
+  },
+  "removeKeyModal": {
+    "title": "Potvrďte odstranění klíče IPNS",
+    "description": "Opravdu chcete odstranit klíč IPNS <1>{name}</1>? Tuto operaci nelze vrátit zpět a adresa IPNS spravovaná tímto klíčem bude navždy ztracena. Zvažte nejprve jeho zálohování: ipfs key export --help"
+  }
+}
